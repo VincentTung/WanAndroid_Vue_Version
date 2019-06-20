@@ -3,6 +3,7 @@ package com.vincent.wanandroid.vue
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.KeyEvent
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -11,10 +12,14 @@ import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
+import android.view.KeyEvent.KEYCODE_BACK
+import java.util.*
+
 
 class MainActivity : FragmentActivity() {
 
-    private val MAIN_PAGE = "file:///android_asset/index.html";
+    private val MAIN_PAGE = "file:///android_asset/index.html"
+    var mBackKeyPressed =false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,4 +52,32 @@ class MainActivity : FragmentActivity() {
         webview.webChromeClient = WebChromeClient()
         webview.loadUrl(MAIN_PAGE)
     }
+    override  fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (webview.canGoBack()) {
+                webview.goBack()
+                return true
+            } else {
+                if (!mBackKeyPressed) {
+
+                    mBackKeyPressed = true
+                    Timer().schedule(object : TimerTask() {
+                        override fun run() {
+                            mBackKeyPressed = false
+                        }
+
+                    }, 2000)
+                    return true
+
+                } else {
+                    this.finish()
+                    System.exit(0)
+                }
+            }
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+
 }
