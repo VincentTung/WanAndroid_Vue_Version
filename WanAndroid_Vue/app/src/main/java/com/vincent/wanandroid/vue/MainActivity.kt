@@ -1,5 +1,6 @@
 package com.vincent.wanandroid.vue
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
@@ -20,12 +21,13 @@ class MainActivity : FragmentActivity() {
 
     private val MAIN_PAGE = "file:///android_asset/index.html"
     var mBackKeyPressed =false
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val webSettings = webview.settings
-        webSettings.setJavaScriptEnabled(true)
+        webSettings.javaScriptEnabled = true
         webSettings.cacheMode = WebSettings.LOAD_DEFAULT
         webSettings.domStorageEnabled = true
         webSettings.databaseEnabled = true
