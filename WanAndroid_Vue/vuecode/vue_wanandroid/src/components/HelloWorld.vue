@@ -1,68 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a href="https://vuejs.org"
-           target="_blank">
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org"
-           target="_blank">
-          Forum
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org"
-           target="_blank">
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs"
-           target="_blank">
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a href="http://vuejs-templates.github.io/webpack/"
-           target="_blank">
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a href="http://router.vuejs.org/"
-           target="_blank">
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a href="http://vuex.vuejs.org/"
-           target="_blank">
-          vuex
-        </a>
-      </li>
-      <li>
-        <a href="http://vue-loader.vuejs.org/"
-           target="_blank">
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue"
-           target="_blank">
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-
     <div id="app">
       <!-- 推荐这种写法-->
       <ul class="tab-tit">
@@ -77,11 +15,11 @@
              v-show="cur==index">{{m}}</div>
       </div>
     </div>
-    <script>
-    var app = new Vue({
-      el: '#app'
-    })
-    </script>
+
+    <!-- <div @click="handleDivClick"  :class="{activated:isActivated}">{{fullName}}</div> -->
+
+    <div v-if="isActivated">90808008708</div>
+  <div v-html="h"></div>
   </div>
 </template>
 
@@ -90,11 +28,64 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      h:'<h1>hello</h1>',
+      name:'VincentTung',
       tabTitle: ['首页', '知识体系', '公众号', '项目'],
       tabMain: ['内容一', '内容二', '内容三', '内容四'],
       cur: 0,
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      firstName:'vincent',
+      lastName:'tung',
+      isActivated:true,
     }
+  },
+  //计算属性
+  computed:{
+      fullName:{
+        get:function(){
+        return this.firstName+' '+this.lastName
+        },
+        set:function(value){
+
+            var arr = value.split(" ");
+            this.firstName = arr[0];
+            this.lastName = arr[1];
+
+        }
+      }
+  },
+  methods: {
+
+    handleDivClick(){
+        this.isActivated=!this.isActivated;
+    }
+  },
+  beforeCreate(){
+    console.log('---beforeCreate')
+  },
+  created(){
+
+    console.log('---created')
+  },
+  beforeMount(){
+
+    console.log('---beforeMount')
+  },
+  mounted(){
+   console.log('---mounted')
+  },
+  beforeDestroy(){
+console.log('---beforeDestroy')
+  },
+  destroyed(){
+console.log('---destroyed')
+  },
+  beforeUpdate(){
+console.log('---beforeUpdate')
+  },
+  updated(){
+
+console.log('---updated')
   }
 }
 </script>
@@ -115,5 +106,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.activated {
+
+color: red
 }
 </style>
