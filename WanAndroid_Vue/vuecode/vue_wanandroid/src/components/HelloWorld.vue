@@ -1,19 +1,18 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <div id="app">
+  <div class="parent"> 
+    <div id="app"  >
       <!-- 推荐这种写法-->
-      <ul class="tab-tit">
+      <!-- <ul class="tab-tit">
         <li v-for="(title,index) in tabTitle"
             @click="cur=index"
             :key="index"
             :class="{active:cur==index}">{{title}}</li>
-      </ul>
-      <div class="tab-content">
+      </ul> -->
+      <!-- <div class="tab-content">
         <div v-for="(m,index) in tabMain"
              :key="index"
              v-show="cur==index">{{m}}</div>
-      </div>
+      </div> -->
     </div>
 
     <!-- <div @click="handleDivClick"  :class="{activated:isActivated}">{{fullName}}</div> -->

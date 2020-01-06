@@ -6,9 +6,14 @@ import router from './router'
 import 'babel-polyfill'
 import fastclick from 'fastclick'
 import axios from 'axios'
+
+import Vant from 'vant'
+import 'vant/lib/index.css'
+
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
+Vue.use(Vant)
 fastclick.attach(document.body)
 /* eslint-disable no-new */
 new Vue({
