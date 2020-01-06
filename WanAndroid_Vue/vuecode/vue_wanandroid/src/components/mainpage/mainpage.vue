@@ -4,9 +4,11 @@
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="getData">
       <van-cell v-for="item in article" :key="item.id">
         <div>
+          <div class="chapter">
           {{item.chapterName}}
+          </div>
           {{item.title}}
-          {{item.publishTime}}
+         <div class="time"> {{item.publishTime}}</div>
         </div>
       </van-cell>
     </van-list>
@@ -36,12 +38,12 @@ export default {
         .then(function(response) {
           console.log(response);
           this_.loading = false;
-          if (response.data.data.datas.length < 20) {
-            this_.article = this_.article.concat(response.data.data.datas);
-
-            this_.finished = false;
+          if (this_.article.length > 20) {
+              this_.finished = true;
           } else {
-            this_.finished = true;
+             this_.article = this_.article.concat(response.data.data.datas);
+            this_.finished = false;
+      
           }
         })
         .catch(function(error) {
@@ -50,4 +52,17 @@ export default {
     }
   }
 };
+
+
 </script>
+<style scoped>
+.time{
+
+  color:red;
+}
+.chapter{
+  align-self:right;
+  align:right;
+  color: blue;
+}
+</style>
