@@ -10,7 +10,17 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      //api跨域请求
+      '/api': {
+        target: 'https://www.wanandroid.com',
+        changeOrigin: true,//是否跨域
+        secure: true, // 允许https请求
+        pathRewrite: {
+          '^/api': ''//这里理解成用‘/api’代替target里面的地址
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

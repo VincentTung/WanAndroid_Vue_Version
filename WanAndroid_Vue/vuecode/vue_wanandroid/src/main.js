@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import 'babel-polyfill'
 import fastclick from 'fastclick'
-
+import axios from 'axios'
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 fastclick.attach(document.body)
