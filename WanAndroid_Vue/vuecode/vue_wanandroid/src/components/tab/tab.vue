@@ -1,50 +1,41 @@
 <template>
   <div class="tab">
-    <router-link tag="div" class="tab-item" to="/mainpage">
-      <span class="tab-link">首页</span>
-    </router-link>
-
-    <router-link tag="div" class="tab-item" to="/knowledge">
-      <span class="tab-link">知识体系</span>
-    </router-link>
-
-    <router-link tag="div" class="tab-item" to="/wxaccount">
-      <span class="tab-link">公众号</span>
-    </router-link>
-
-    <router-link tag="div" class="tab-item" to="/project">
-      <span class="tab-link">项目</span>
-    </router-link>
+    <van-tabbar v-model="active" active-color="#4876FF" inactive-color="#8A8A8A">
+      <van-tabbar-item icon="home-o">
+        <router-link tag="div" class="tab-item" to="/mainpage">
+          <span class="tab-link">首页</span>
+        </router-link>
+      </van-tabbar-item>
+      <van-tabbar-item icon="cluster-o">
+        <router-link tag="div" class="tab-item" to="/knowledge">
+          <span class="tab-link">知识体系</span>
+        </router-link>
+      </van-tabbar-item>
+      <van-tabbar-item icon="friends-o">
+        <router-link tag="div" class="tab-item" to="/wxaccount">
+          <span class="tab-link">公众号</span>
+        </router-link>
+      </van-tabbar-item>
+      <van-tabbar-item icon="records">
+        <router-link tag="div" class="tab-item" to="/project">
+          <span class="tab-link">项目</span>
+        </router-link>
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Tab"
+  name: "Tab",
+  data: function() {
+    return {
+      active: 0
+    };
+  },
+  methods: {}
 };
 </script>
 
 <style  lang="stylus">
-.tab {
-  display: flex;
-  height: 44px;
-  line-height: 44px;
-}
-
-.tab-item {
-  flex: 1;
-  text-align: center;
-
-  .tab-link {
-    padding-bottom: 5px;
-    color: black;
-  }
-
-  &.router-link-active {
-    .tab-link {
-      color: blue;
-    }
-  }
-}
 </style>
-

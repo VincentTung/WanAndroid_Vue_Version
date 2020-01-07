@@ -1,9 +1,6 @@
 <template>
   <div class="parent">
-    <!-- <div @click="handleDivClick"  :class="{activated:isActivated}">{{fullName}}</div> -->
 
-    <div v-if="isActivated">90808008708</div>
-    <div v-html="h"></div>
   </div>
 </template>
 

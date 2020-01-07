@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <div>mainpage</div>
-    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="getData">
-      <van-cell v-for="item in article" :key="item.id">
-        <div>
-          <div class="chapter">
-          {{item.chapterName}}
+    <van-pull-refresh v-model="loading" @refresh="onRefresh">
+      <van-list v-model="loading" :finished="finished" finished-text="我是有底线的" @load="getData">
+        <van-cell v-for="item in article" :key="item.id">
+          <div v-on:click="openArticle(item)">
+            <div class="chapter">{{item.chapterName}}</div>
+            <div class="title">{{item.title}}</div>
+            <div class="time">{{item.publishTime}}</div>
           </div>
-          {{item.title}}
-         <div class="time"> {{item.publishTime}}</div>
-        </div>
-      </van-cell>
-    </van-list>
+        </van-cell>
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -30,6 +29,16 @@ export default {
     this.getData();
   },
   methods: {
+    openArticle:function(article){
+      console.log(article.chapterName);
+      window.open(article.link);
+    },
+    onRefresh: function() {
+      this.page = 0;
+      this.loading = true;
+      this.article = [];
+      this.getData();
+    },
     getData: function() {
       this.page++;
       var this_ = this;
@@ -39,11 +48,10 @@ export default {
           console.log(response);
           this_.loading = false;
           if (this_.article.length > 20) {
-              this_.finished = true;
+            this_.finished = true;
           } else {
-             this_.article = this_.article.concat(response.data.data.datas);
+            this_.article = this_.article.concat(response.data.data.datas);
             this_.finished = false;
-      
           }
         })
         .catch(function(error) {
@@ -52,17 +60,16 @@ export default {
     }
   }
 };
-
-
 </script>
 <style scoped>
-.time{
-
-  color:red;
+.time {
+  color: red;
 }
-.chapter{
-  align-self:right;
-  align:right;
+.title{
+  color:black;
+  font-size:20;
+}
+.chapter {
   color: blue;
 }
 </style>
