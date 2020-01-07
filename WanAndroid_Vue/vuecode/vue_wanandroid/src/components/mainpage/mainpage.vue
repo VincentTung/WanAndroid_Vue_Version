@@ -52,7 +52,7 @@ export default {
       this.page++
       var this_ = this
       this.$axios
-        .get('/api/article/listproject/' + this_.page + '/json')
+        .get('https://www.wanandroid.com/article/listproject/' + this_.page + '/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
@@ -114,7 +114,7 @@ export default {
     getBanners: function () {
       var this_ = this
       this.$axios
-        .get('/api/banner/json')
+        .get('https://www.wanandroid.com/banner/json')
         .then(function (response) {
           console.log(response)
 
