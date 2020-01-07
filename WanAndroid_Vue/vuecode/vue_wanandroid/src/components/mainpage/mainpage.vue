@@ -9,9 +9,11 @@
       <van-list v-model="loading" :finished="finished" finished-text="我是有底线的" @load="getData">
         <van-cell v-for="item in article" :key="item.id">
           <div v-on:click="openArticle(item)">
-            <div class="chapter">{{item.chapterName}}</div>
+            <div>
+              <van-tag class="chapter" round plain size="medium">{{item.chapterName}}</van-tag>
+            </div>
             <div class="title">{{item.title}}</div>
-            <div class="time">{{item.publishTime}}</div>
+            <div class="time">{{formatMsgTime(item.publishTime)}}</div>
           </div>
         </van-cell>
       </van-list>
@@ -43,7 +45,7 @@ export default {
       this.page = 0;
       this.loading = true;
       this.article = [];
-      // this.getData();
+      this.getData();
       this.getBanners();
     },
     getData: function() {
@@ -54,16 +56,61 @@ export default {
         .then(function(response) {
           console.log(response);
           this_.loading = false;
-          if (this_.article.length > 20) {
+          if (response.data.data.datas.length > 0) {
             this_.finished = true;
-          } else {
             this_.article = this_.article.concat(response.data.data.datas);
-            this_.finished = false;
+          } else {
+            this_.finished = true;
           }
         })
         .catch(function(error) {
           console.log(error);
         });
+    },
+    formatMsgTime: function(timespan) {
+      var dateTime = new Date(timespan);
+
+      var year = dateTime.getFullYear();
+      var month = dateTime.getMonth() + 1;
+      var day = dateTime.getDate();
+      var hour = dateTime.getHours();
+      var minute = dateTime.getMinutes();
+      var second = dateTime.getSeconds();
+      var now = new Date();
+      var now_new = Date.parse(now.toDateString()); //typescript转换写法
+
+      var milliseconds = 0;
+      var timeSpanStr;
+
+      milliseconds = now_new - timespan;
+
+      if (milliseconds <= 1000 * 60 * 1) {
+        timeSpanStr = "刚刚";
+      } else if (
+        1000 * 60 * 1 < milliseconds &&
+        milliseconds <= 1000 * 60 * 60
+      ) {
+        timeSpanStr = Math.round(milliseconds / (1000 * 60)) + "分钟前";
+      } else if (
+        1000 * 60 * 60 * 1 < milliseconds &&
+        milliseconds <= 1000 * 60 * 60 * 24
+      ) {
+        timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + "小时前";
+      } else if (
+        1000 * 60 * 60 * 24 < milliseconds &&
+        milliseconds <= 1000 * 60 * 60 * 24 * 15
+      ) {
+        timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + "天前";
+      } else if (
+        milliseconds > 1000 * 60 * 60 * 24 * 15 &&
+        year == now.getFullYear()
+      ) {
+        timeSpanStr = month + "-" + day + " " + hour + ":" + minute;
+      } else {
+        timeSpanStr =
+          year + "-" + month + "-" + day + " " + hour + ":" + minute;
+      }
+      return timeSpanStr;
     },
     getBanners: function() {
       var this_ = this;
@@ -84,10 +131,11 @@ export default {
 </script>
 <style scoped>
 .time {
-  color: red;
+  color: grey;
 }
 .title {
   color: black;
+  font-weight: bold;
   font-size: 20;
 }
 .chapter {

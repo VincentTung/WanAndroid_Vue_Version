@@ -2,6 +2,7 @@
   <div id="app">
     <van-tabs
       @change="onTabClick"
+      sticky
       v-model="active"
       animated
       type="line"
@@ -49,7 +50,7 @@ export default {
       var this_ = this;
 
       this.$axios
-        .get("/api/wxarticle/list/" + wxaccount.id + "/1/json")
+        .get("/api/wxarticle/list/" + wxaccount.id + "/0/json")
         .then(function(response) {
           console.log(response);
           this_.loading = false;
@@ -69,7 +70,7 @@ export default {
           this_.loading = false;
           this_.wxaccounts = response.data.data;
 
-          this_.getWXAccountArticles[this_.wxaccounts[0]];
+          this_.getWXAccountArticles(this_.wxaccounts[0]);
           this_.loading = false;
         })
         .catch(function(error) {
@@ -79,3 +80,15 @@ export default {
   }
 };
 </script>
+<style scoped>
+.time {
+  color: red;
+}
+.title {
+  color: black;
+  font-size: 20;
+}
+.chapter {
+  color: blue;
+}
+</style>
