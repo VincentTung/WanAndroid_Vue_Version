@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
+      <van-swipe :autoplay="2000" indicator-color="white">
+        <van-swipe-item v-for="banner in banners" :key="banner.imagePath">
+          <van-image height="200" :src="banner.imagePath" />
+        </van-swipe-item>
+      </van-swipe>
       <van-list v-model="loading" :finished="finished" finished-text="我是有底线的" @load="getData">
         <van-cell v-for="item in article" :key="item.id">
           <div v-on:click="openArticle(item)">
@@ -21,15 +26,16 @@ export default {
       page: 0,
       article: [],
       loading: false,
-      finished: false
+      finished: false,
+      banners: []
     };
   },
   name: "mainpage",
   mounted: function() {
-    this.getData();
+    this.getBanners();
   },
   methods: {
-    openArticle:function(article){
+    openArticle: function(article) {
       console.log(article.chapterName);
       window.open(article.link);
     },
@@ -37,7 +43,8 @@ export default {
       this.page = 0;
       this.loading = true;
       this.article = [];
-      this.getData();
+      // this.getData();
+      this.getBanners();
     },
     getData: function() {
       this.page++;
@@ -57,6 +64,20 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    getBanners: function() {
+      var this_ = this;
+      this.$axios
+        .get("/api/banner/json")
+        .then(function(response) {
+          console.log(response);
+
+          this_.banners = response.data.data;
+          this_.loading = false;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };
@@ -65,9 +86,9 @@ export default {
 .time {
   color: red;
 }
-.title{
-  color:black;
-  font-size:20;
+.title {
+  color: black;
+  font-size: 20;
 }
 .chapter {
   color: blue;
