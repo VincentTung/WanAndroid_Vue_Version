@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "Knowledge",
+  name: 'Knowledge',
   data() {
     return {
       trees: [],
@@ -34,22 +34,22 @@ export default {
       finished: false
     };
   },
-  mounted: function() {},
+  mounted: function () { },
   methods: {
-    openArticle: function(url) {},
-    getData: function() {
-      var this_ = this;
+    openArticle: function (url) { },
+    getData: function () {
+      var this_ = this
       this.$axios
-        .get("/api/tree/json")
-        .then(function(response) {
-          console.log(response);
+        .get('/api/tree/json')
+        .then(function (response) {
+          console.log(response)
 
-          this_.trees = response.data.data;
-          this_.loading = false;
-          this_.finished = true;
+          this_.trees = response.data.data
+          this_.loading = false
+          this_.finished = true
         })
-        .catch(function(error) {
-          console.log(error);
+        .catch(function (error) {
+          console.log(error)
         });
     }
   }
@@ -59,7 +59,7 @@ export default {
 .child {
   color: black;
   font-size: 20;
-  margin:20;
+  margin: 20;
 }
 .title {
   color: blue;

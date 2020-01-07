@@ -1,33 +1,31 @@
 <template>
-  <div class="parent">
-
-  </div>
+  <div class="parent"></div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   data() {
     return {
       isActivated: true
-    };
+    }
   },
   //计算属性
   computed: {
     fullName: {
-      get: function() {
-        return this.firstName + " " + this.lastName;
+      get: function () {
+        return this.firstName + ' ' + this.lastName
       },
-      set: function(value) {
-        var arr = value.split(" ");
-        this.firstName = arr[0];
-        this.lastName = arr[1];
+      set: function (value) {
+        var arr = value.split(' ')
+        this.firstName = arr[0]
+        this.lastName = arr[1]
       }
     }
   },
   methods: {
-    handleDivClick() {
-      this.isActivated = !this.isActivated;
+    handleDivClick: function () {
+      this.isActivated = !this.isActivated
     }
   },
   beforeCreate() {

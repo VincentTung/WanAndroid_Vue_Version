@@ -21,7 +21,7 @@
                     </template>
                   </van-image>
                 </van-col>
-                <van-col span="16">
+                <van-col span="16" offset="0">
                   <div class="conent">
                     <div class="van-ellipsis">{{item.title}}</div>
                     <div class="van-multi-ellipsis--l2">{{item.desc}}</div>
@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       active: 0,
       page: 0,
@@ -48,64 +48,63 @@ export default {
       finished: false,
       first: true,
       articles: []
-    };
+    }
   },
-  name: "project",
-  mounted: function() {
-    this.getData();
+  name: 'project',
+  mounted: function () {
+    this.getData()
   },
   methods: {
-    onTabClick: function() {
-      this.getWXAccountArticles(this.wxaccounts[this.active]);
+    onTabClick: function () {
+      this.getWXAccountArticles(this.wxaccounts[this.active])
     },
-    getWXAccountArticles: function(wxaccount) {
-      this.articles = [];
-      var this_ = this;
-
+    getWXAccountArticles: function (wxaccount) {
+      this.articles = []
+      var this_ = this
       this.$axios
-        .get("/api/wxarticle/list/" + wxaccount.id + "/0/json")
-        .then(function(response) {
-          console.log(response);
-          this_.loading = false;
-          this_.finished = true;
-          this_.articles = response.data.data.datas;
+        .get('/api/wxarticle/list/' + wxaccount.id + '/0/json')
+        .then(function (response) {
+          console.log(response)
+          this_.loading = false
+          this_.finished = true
+          this_.articles = response.data.data.datas
         })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .catch(function (error) {
+          console.log(error)
+        })
     },
-    getData: function() {
-      var this_ = this;
+    getData: function () {
+      var this_ = this
       this.$axios
-        .get("/api/project/tree/json")
-        .then(function(response) {
-          console.log(response);
-          this_.loading = false;
-          this_.wxaccounts = response.data.data;
+        .get('/api/project/tree/json')
+        .then(function (response) {
+          console.log(response)
+          this_.loading = false
+          this_.wxaccounts = response.data.data
 
-          this_.getWXAccountArticles(this_.wxaccounts[0]);
-          this_.loading = false;
+          this_.getWXAccountArticles(this_.wxaccounts[0])
+          this_.loading = false
         })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>
-<style scoped>
+<style>
 .time {
   color: grey;
 }
-.van-multi-ellipsis--l2  {
+.van-multi-ellipsis--l2 {
   color: black;
   font-size: 20;
 }
 .van-ellipsis {
   color: black;
-  font-weight:bold;
+  font-weight: bold;
 }
-.content{
-  margin:10;
+.content {
+  margin: 10;
 }
 </style>

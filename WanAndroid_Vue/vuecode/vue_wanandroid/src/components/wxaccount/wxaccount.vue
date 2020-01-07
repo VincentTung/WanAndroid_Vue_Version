@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       active: 0,
       page: 0,
@@ -35,47 +35,47 @@ export default {
       finished: false,
       first: true,
       articles: []
-    };
+    }
   },
-  name: "wxaccount",
-  mounted: function() {
-    this.getData();
+  name: 'wxaccount',
+  mounted: function () {
+    this.getData()
   },
   methods: {
-    onTabClick: function() {
-      this.getWXAccountArticles(this.wxaccounts[this.active]);
+    onTabClick: function () {
+      this.getWXAccountArticles(this.wxaccounts[this.active])
     },
-    getWXAccountArticles: function(wxaccount) {
-      this.articles = [];
-      var this_ = this;
+    getWXAccountArticles: function (wxaccount) {
+      this.articles = []
+      var this_ = this
 
       this.$axios
-        .get("/api/wxarticle/list/" + wxaccount.id + "/0/json")
-        .then(function(response) {
-          console.log(response);
-          this_.loading = false;
-          this_.finished = true;
-          this_.articles = response.data.data.datas;
+        .get('/api/wxarticle/list/' + wxaccount.id + '/0/json')
+        .then(function (response) {
+          console.log(response)
+          this_.loading = false
+          this_.finished = true
+          this_.articles = response.data.data.datas
         })
-        .catch(function(error) {
-          console.log(error);
+        .catch(function (error) {
+          console.log(error)
         });
     },
-    getData: function() {
-      var this_ = this;
+    getData: function () {
+      var this_ = this
       this.$axios
-        .get("/api/wxarticle/chapters/json")
-        .then(function(response) {
-          console.log(response);
-          this_.loading = false;
-          this_.wxaccounts = response.data.data;
+        .get('/api/wxarticle/chapters/json')
+        .then(function (response) {
+          console.log(response)
+          this_.loading = false
+          this_.wxaccounts = response.data.data
 
-          this_.getWXAccountArticles(this_.wxaccounts[0]);
-          this_.loading = false;
+          this_.getWXAccountArticles(this_.wxaccounts[0])
+          this_.loading = false
         })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 };
