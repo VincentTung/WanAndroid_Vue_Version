@@ -27,15 +27,14 @@
 
 <script>
 export default {
-  name: "Tab",
-  data: function() {
+  name: 'Tab',
+  data: function () {
     return {
       active: 0
-    };
+    }
   },
   methods: {}
-};
+}
 </script>
 
-<style  lang="stylus">
-</style>
+<style  lang="stylus"></style>

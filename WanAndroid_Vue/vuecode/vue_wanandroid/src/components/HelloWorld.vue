@@ -29,30 +29,30 @@ export default {
     }
   },
   beforeCreate() {
-    console.log("---beforeCreate");
+    console.log("---beforeCreate")
   },
   created() {
-    console.log("---created");
+    console.log("---created")
   },
   beforeMount() {
-    console.log("---beforeMount");
+    console.log("---beforeMount")
   },
   mounted() {
-    console.log("---mounted");
+    console.log("---mounted")
   },
   beforeDestroy() {
-    console.log("---beforeDestroy");
+    console.log("---beforeDestroy")
   },
   destroyed() {
-    console.log("---destroyed");
+    console.log("---destroyed")
   },
   beforeUpdate() {
-    console.log("---beforeUpdate");
+    console.log("---beforeUpdate")
   },
   updated() {
-    console.log("---updated");
+    console.log("---updated")
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

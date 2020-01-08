@@ -27,12 +27,12 @@
 <script>
 export default {
   name: 'Knowledge',
-  data() {
+  data () {
     return {
       trees: [],
       loading: false,
       finished: false
-    };
+    }
   },
   mounted: function () { },
   methods: {
@@ -50,10 +50,10 @@ export default {
         })
         .catch(function (error) {
           console.log(error)
-        });
+        })
     }
   }
-};
+}
 </script>
 <style scoped>
 .child {
