@@ -3,7 +3,7 @@
     <van-tabs
       @change="onTabClick"
       sticky
-      ellipsis="false"
+      :ellipsis="false"
       v-model="active"
       animated
       type="card"

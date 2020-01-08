@@ -5,37 +5,47 @@ import Knowledge from '@/components/knowledge/Knowledge'
 import WxAccount from '@/components/wxaccount/wxaccount'
 import Project from '@/components/project/project'
 import Article from '@/components/article/article'
+import TabPage from '@/components/tabpage/tabpage'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/mainpage'
+      redirect: '/tabpage/mainpage'
     },
+
     {
-      path: '/mainpage',
-      name: 'MainPage',
-      component: MainPage
+      path: '/tabpage',
+      name: 'TabPage',
+      component: TabPage,
+      children: [
+        {
+          path: 'mainpage',
+          name: 'MainPage',
+          component: MainPage
+        },
+
+        {
+          path: 'knowledge',
+          name: 'Knowledge',
+          component: Knowledge
+        },
+        {
+          path: 'wxaccount',
+          name: 'WxAccount',
+          component: WxAccount
+        }, {
+          path: 'project',
+          name: 'Project',
+          component: Project
+        }
+      ]
     },
     {
       path: '/article',
       name: 'article',
       component: Article
-    },
-    {
-      path: '/knowledge',
-      name: 'Knowledge',
-      component: Knowledge
-    },
-    {
-      path: '/wxaccount',
-      name: 'WxAccount',
-      component: WxAccount
-    }, {
-      path: '/project',
-      name: 'Project',
-      component: Project
     }
   ]
 })

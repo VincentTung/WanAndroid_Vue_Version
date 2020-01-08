@@ -55,7 +55,7 @@ export default {
           phoneNum: 12345678901
         }
       })
-      window.open(routeData.href, '_blank')
+      window.open(routeData.href, 'https://www.baidu.com')
     },
     formatMsgTime: function (timeStamp) {
       return formatMsgTime(timeStamp)
