@@ -12,7 +12,7 @@
 
 ## 截图预览
 
-| <img src="/screen_shot/main_page.jpg" width="280" alt=""/> | <img src="/screen_shot/knowledge_tree.jpg" width="280" alt="知识体系"/> | <img src="/screen_shot/wx_account.jpg" width="280" alt="公众号"/> |
+| <img src="https://github.com/VincentTung/WanAndroid_Vue_Version/raw/master//screen_shot/main_page.jpg" width="280" alt=""/> | <img src="/screen_shot/knowledge_tree.jpg" width="280" alt="知识体系"/> | <img src="/screen_shot/wx_account.jpg" width="280" alt="公众号"/> |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                             首页                             |                           知识体系                           |                            公众号                            |
 
