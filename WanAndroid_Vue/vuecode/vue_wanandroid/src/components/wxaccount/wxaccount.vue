@@ -15,7 +15,7 @@
             <div v-on:click="openArticle(item)">
               <div class="chapter">{{item.chapterName}}</div>
               <div class="title">{{item.title}}</div>
-              <div class="time">{{item.publishTime}}</div>
+              <div class="time">{{formatMsgTime(item.publishTime)}}</div>
             </div>
           </van-cell>
         </van-list>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { formatMsgTime } from '@/util/util'
 export default {
   data: function () {
     return {
@@ -44,6 +45,9 @@ export default {
   methods: {
     onTabClick: function () {
       this.getWXAccountArticles(this.wxaccounts[this.active])
+    },
+    formatMsgTime: function (timeStamp) {
+      return formatMsgTime(timeStamp)
     },
     getWXAccountArticles: function (wxaccount) {
       this.articles = []
