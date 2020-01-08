@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
+  <div class="app">
     <van-tabs
       @change="onTabClick"
       sticky
+      ellipsis="false"
       v-model="active"
       animated
       type="card"
@@ -24,7 +25,7 @@
                 <van-col span="16" offset="0">
                   <div class="conent">
                     <div class="van-ellipsis">{{item.title}}</div>
-                    <div class="van-multi-ellipsis--l2">{{item.desc}}</div>
+                    <div class="a">{{item.desc}}</div>
                     <div class="time">{{item.author}}</div>
                   </div>
                 </van-col>
@@ -62,7 +63,7 @@ export default {
       this.articles = []
       var this_ = this
       this.$axios
-        .get('/api/wxarticle/list/' + wxaccount.id + '/0/json')
+        .get(this.baseUrl + '/wxarticle/list/' + wxaccount.id + '/0/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
@@ -76,7 +77,7 @@ export default {
     getData: function () {
       var this_ = this
       this.$axios
-        .get('/api/project/tree/json')
+        .get(this.baseUrl + '/project/tree/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
@@ -96,9 +97,15 @@ export default {
 .time {
   color: grey;
 }
-.van-multi-ellipsis--l2 {
+.a {
   color: black;
   font-size: 20;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  white-space: pre-wrap;
 }
 .van-ellipsis {
   color: black;
@@ -106,5 +113,12 @@ export default {
 }
 .content {
   margin: 10;
+}
+.app {
+  margin-top: 10px;
+}
+.van-tabs__nav--card {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 </style>

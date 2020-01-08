@@ -31,12 +31,12 @@ class MainActivity : FragmentActivity() {
         webSettings.databaseEnabled = true
         webSettings.setAppCacheEnabled(true)
         webSettings.useWideViewPort = true
-        webSettings.allowFileAccessFromFileURLs = true
+//        webSettings.allowFileAccessFromFileURLs = true
+        /**
+         * 浏览器跨域设置
+         */
         webSettings.allowUniversalAccessFromFileURLs =true
         webSettings.loadWithOverviewMode = true
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        }
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webview.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -51,16 +51,17 @@ class MainActivity : FragmentActivity() {
                 return super.shouldOverrideUrlLoading(view, url)
             }
 
-            override fun shouldInterceptRequest(
-                view: WebView?,
-                url: String?
-            ): WebResourceResponse? {
-                if(!url?.contains("wanandroid")!! ||url.endsWith(".png")) {
-                    return super.shouldInterceptRequest(webview, url)
-                }else {
-                    return Util.getWebView(url)
-
-                }}
+//            override fun shouldInterceptRequest(
+//                view: WebView?,
+//                url: String?
+//            ): WebResourceResponse? {
+//                return if(!url?.contains("wanandroid")!! ||url.endsWith(".png")) {
+//                    super.shouldInterceptRequest(webview, url)
+//                }else {
+//                    Util.getWebView(url)
+//
+//                }
+//            }
 
 
 

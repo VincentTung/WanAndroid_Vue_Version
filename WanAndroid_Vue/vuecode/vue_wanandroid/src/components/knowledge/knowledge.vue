@@ -27,7 +27,7 @@
 <script>
 export default {
   name: 'Knowledge',
-  data () {
+  data: function () {
     return {
       trees: [],
       loading: false,
@@ -40,7 +40,7 @@ export default {
     getData: function () {
       var this_ = this
       this.$axios
-        .get('/api/tree/json')
+        .get(this.baseUrl + '/tree/json')
         .then(function (response) {
           console.log(response)
 
@@ -59,7 +59,7 @@ export default {
 .child {
   color: black;
   font-size: 20;
-  margin: 20;
+  margin-right: 5px;
 }
 .title {
   color: blue;

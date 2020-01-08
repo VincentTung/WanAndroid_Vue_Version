@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
     <van-tabbar v-model="active" active-color="#4876FF" inactive-color="#8A8A8A">
-      <van-tabbar-item icon="home-o">
+      <van-tabbar-item icon="home-o" title="1111">
         <router-link tag="div" class="tab-item" to="/mainpage">
           <span class="tab-link">首页</span>
         </router-link>

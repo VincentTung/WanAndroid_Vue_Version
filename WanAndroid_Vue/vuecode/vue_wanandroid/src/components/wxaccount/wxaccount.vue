@@ -50,7 +50,7 @@ export default {
       var this_ = this
 
       this.$axios
-        .get('/api/wxarticle/list/' + wxaccount.id + '/0/json')
+        .get(this.baseUrl + '/wxarticle/list/' + wxaccount.id + '/0/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
@@ -64,7 +64,7 @@ export default {
     getData: function () {
       var this_ = this
       this.$axios
-        .get('/api/wxarticle/chapters/json')
+        .get(this.baseUrl + '/wxarticle/chapters/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
@@ -82,7 +82,7 @@ export default {
 </script>
 <style scoped>
 .time {
-  color: red;
+  color: grey;
 }
 .title {
   color: black;

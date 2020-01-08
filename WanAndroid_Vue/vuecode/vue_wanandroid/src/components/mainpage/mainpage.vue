@@ -10,7 +10,13 @@
         <van-cell v-for="item in article" :key="item.id">
           <div v-on:click="openArticle(item)">
             <div>
-              <van-tag class="chapter" round plain size="medium">{{item.chapterName}}</van-tag>
+              <van-tag
+                class="chapter"
+                round
+                plain
+                size="medium"
+                color="#4876FF"
+              >{{item.chapterName}}</van-tag>
             </div>
             <div class="title">{{item.title}}</div>
             <div class="time">{{formatMsgTime(item.publishTime)}}</div>
@@ -30,7 +36,7 @@ export default {
       loading: false,
       finished: false,
       banners: []
-    };
+    }
   },
   name: 'mainpage',
   mounted: function () {
@@ -52,12 +58,12 @@ export default {
       this.page++
       var this_ = this
       this.$axios
-        .get('https://www.wanandroid.com/article/listproject/' + this_.page + '/json')
+        .get(this.baseUrl + '/article/listproject/' + this_.page + '/json')
         .then(function (response) {
           console.log(response)
           this_.loading = false
           if (response.data.data.datas.length > 0) {
-            this_.finished = true
+            this_.finished = false
             this_.article = this_.article.concat(response.data.data.datas)
           } else {
             this_.finished = true
@@ -65,7 +71,7 @@ export default {
         })
         .catch(function (error) {
           console.log(error)
-        });
+        })
     },
     formatMsgTime: function (timespan) {
       var dateTime = new Date(timespan)
@@ -114,7 +120,7 @@ export default {
     getBanners: function () {
       var this_ = this
       this.$axios
-        .get('https://www.wanandroid.com/banner/json')
+        .get(this.baseUrl + '/banner/json')
         .then(function (response) {
           console.log(response)
 
@@ -123,10 +129,10 @@ export default {
         })
         .catch(function (error) {
           console.log(error)
-        });
+        })
     }
   }
-};
+}
 </script>
 <style scoped>
 .time {
