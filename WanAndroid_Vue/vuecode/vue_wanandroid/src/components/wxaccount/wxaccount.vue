@@ -59,7 +59,7 @@ export default {
         })
         .catch(function (error) {
           console.log(error)
-        });
+        })
     },
     getData: function () {
       var this_ = this
@@ -78,7 +78,7 @@ export default {
         })
     }
   }
-};
+}
 </script>
 <style scoped>
 .time {
