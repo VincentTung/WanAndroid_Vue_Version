@@ -3,7 +3,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
 android {
     compileSdkVersion 28
     compileOptions {
@@ -18,10 +20,36 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    signingConfigs {
+        debug {
+            keyAlias(properties.getProperty("alias"))
+            keyPassword(properties.getProperty("pwd"))
+            storeFile file(properties.getProperty("key"))
+            storePassword(properties.getProperty("pwd"))
+            v2SigningEnabled false
+            v1SigningEnabled true
+        }
+
         release {
+            keyAlias(properties.getProperty("alias"))
+            keyPassword(properties.getProperty("pwd"))
+            storeFile file(properties.getProperty("key"))
+            storePassword(properties.getProperty("pwd"))
+            v2SigningEnabled false
+            v1SigningEnabled true
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
 }
@@ -43,7 +71,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation "com.just.agentweb:agentweb:${rootProject.ext.versions.agentweb}"
+    implementation "com.github.zzz40500:android-shapeLoadingView:${rootProject.ext.versions.shapeLoadingView}"
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.versions.rxandroid}"
     implementation "com.uber.autodispose:autodispose-android:${rootProject.ext.versions.autodispose}"
     implementation "com.uber.autodispose:autodispose:${rootProject.ext.versions.autodispose}"
