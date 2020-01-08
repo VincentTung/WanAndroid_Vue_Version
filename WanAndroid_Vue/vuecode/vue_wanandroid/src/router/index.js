@@ -6,6 +6,7 @@ import WxAccount from '@/components/wxaccount/wxaccount'
 import Project from '@/components/project/project'
 import Article from '@/components/article/article'
 import TabPage from '@/components/tabpage/tabpage'
+import TabKnowledge from '@/components/tabknowledge/tabknowledge'
 Vue.use(Router)
 
 export default new Router({
@@ -46,6 +47,11 @@ export default new Router({
       path: '/article',
       name: 'Article',
       component: Article
+    },
+    {
+      path: '/tabknowledge',
+      name: 'TabKnowledge',
+      component: TabKnowledge
     }
   ]
 })

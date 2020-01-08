@@ -47,13 +47,14 @@ export default {
   methods: {
     openArticle: function (article) {
 
+      // js和android交互
       android.openArticle(article.link)
-      this.$router.push({
-        name: 'Article',
-        params: {
-          url: article.link
-        }
-      })
+      // this.$router.push({
+      //   name: 'Article',
+      //   params: {
+      //     url: article.link
+      //   }
+      // })
     },
     formatMsgTime: function (timeStamp) {
       return formatMsgTime(timeStamp)

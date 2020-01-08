@@ -59,6 +59,17 @@ export default {
     onTabClick: function () {
       this.getWXAccountArticles(this.wxaccounts[this.active])
     },
+    openArticle: function (article) {
+
+      // js和android交互
+      android.openArticle(article.link)
+      // this.$router.push({
+      //   name: 'Article',
+      //   params: {
+      //     url: article.link
+      //   }
+      // })
+    },
     getWXAccountArticles: function (wxaccount) {
       this.articles = []
       var this_ = this

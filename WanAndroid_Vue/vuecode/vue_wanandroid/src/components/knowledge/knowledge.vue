@@ -2,7 +2,7 @@
   <div id="app">
     <van-list v-model="loading" :finished="finished" finished-text="我是有底线的" @load="getData">
       <van-cell v-for="tree in trees" :key="tree.id">
-        <div v-on:click="openArticle(item)">
+        <div v-on:click="openTabKnowledge(tree)">
           <div class="title" plain size="large">
             <div>
               {{tree.name}}
@@ -36,7 +36,14 @@ export default {
   },
   mounted: function () { },
   methods: {
-    openArticle: function (url) { },
+    openTabKnowledge: function (tree) {
+      this.$router.push({
+        name: 'TabKnowledge',
+        params: {
+          trees: tree.children
+        }
+      })
+    },
     getData: function () {
       var this_ = this
       this.$axios
@@ -56,13 +63,14 @@ export default {
 }
 </script>
 <style scoped>
-.child {
-  color: black;
-  font-size: 20;
-  margin-right: 5px;
+.time {
+  color: grey;
 }
 .title {
+  color: black;
+  font-size: 20;
+}
+.chapter {
   color: blue;
-  font-size: 10;
 }
 </style>

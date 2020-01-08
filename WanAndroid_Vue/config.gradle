@@ -24,7 +24,7 @@ ext {
             shapeLoadingView : '1.0.3.2',
             autodispose      : '1.3.0',
             MagicIndicator: '1.5.0',
-            flow_layout: '1.2.4'
+            flow_layout: '1.2.4',
 
 
     ]
