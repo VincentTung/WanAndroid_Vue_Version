@@ -1,6 +1,15 @@
 <template>
   <div id="app">
     <van-nav-bar :title="title" left-text="返回" @click-left="backPress" left-arrow></van-nav-bar>
+    <iframe
+      id="inlineFrameExample"
+      title="Inline Frame Example"
+      width="100%"
+      scrolling="no"
+      height="100%"
+      border="1"
+      :src="url"
+    ></iframe>
   </div>
 </template>
 
@@ -12,11 +21,15 @@ export default {
 
       loading: false,
       finished: false,
-      title: ''
+      title: '',
+      url: ''
     }
   },
+  created: function () {
+    this.url = this.$route.params.url
+  },
   mounted: function () {
-    window.location.href = 'https://www.baidu.com'
+
   },
   methods: {
     openArticle: function (url) { },

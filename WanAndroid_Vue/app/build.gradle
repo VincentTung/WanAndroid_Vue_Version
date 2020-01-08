@@ -43,7 +43,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation "com.just.agentweb:agentweb:${rootProject.ext.versions.agentweb}"
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.versions.rxandroid}"
     implementation "com.uber.autodispose:autodispose-android:${rootProject.ext.versions.autodispose}"
     implementation "com.uber.autodispose:autodispose:${rootProject.ext.versions.autodispose}"

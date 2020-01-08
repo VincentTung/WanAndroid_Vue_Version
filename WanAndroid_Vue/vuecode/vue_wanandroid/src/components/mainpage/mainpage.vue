@@ -46,16 +46,14 @@ export default {
   },
   methods: {
     openArticle: function (article) {
-      console.log(article.chapterName)
-      let routeData = this.$router.resolve({
-        path: '/article',
-        query: {
-          name: 'lei',
-          age: 18,
-          phoneNum: 12345678901
+
+      android.openArticle(article.link)
+      this.$router.push({
+        name: 'Article',
+        params: {
+          url: article.link
         }
       })
-      window.open(routeData.href, 'https://www.baidu.com')
     },
     formatMsgTime: function (timeStamp) {
       return formatMsgTime(timeStamp)

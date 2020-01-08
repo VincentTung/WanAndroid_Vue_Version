@@ -38,6 +38,7 @@ class MainActivity : FragmentActivity() {
         webSettings.allowUniversalAccessFromFileURLs =true
         webSettings.loadWithOverviewMode = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
+        webview.addJavascriptInterface(JS(), "android")
         webview.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 var url = url
@@ -51,17 +52,7 @@ class MainActivity : FragmentActivity() {
                 return super.shouldOverrideUrlLoading(view, url)
             }
 
-//            override fun shouldInterceptRequest(
-//                view: WebView?,
-//                url: String?
-//            ): WebResourceResponse? {
-//                return if(!url?.contains("wanandroid")!! ||url.endsWith(".png")) {
-//                    super.shouldInterceptRequest(webview, url)
-//                }else {
-//                    Util.getWebView(url)
-//
-//                }
-//            }
+
 
 
 
@@ -97,7 +88,12 @@ class MainActivity : FragmentActivity() {
         }
         return super.onKeyDown(keyCode, event)
     }
-
+    internal inner class JS {
+        @JavascriptInterface
+        fun openArticle(url:String) {
+           ArticleWebViewActivity.start(this@MainActivity,url)
+        }
+    }
 
 
 }
