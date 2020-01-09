@@ -1,8 +1,7 @@
 <img src="/screen_shot/icon.png">
+## 项目介绍
 
-## API来源
-
-1. [玩Android API](https://www.wanandroid.com/blog/show/2)来自hongyang
+基于[玩Android API](https://www.wanandroid.com/blog/show/2) 使用vue.js开发的客户端
 
 ## 用到的三方库
 
@@ -16,9 +15,9 @@
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                             首页                             |                           知识体系                           |                            公众号                            |
 
-| <img src="/screen_shot/project.jpg" width="280" height="498" alt="项目"/> | :----------------------------------------------------------: 
-|                             项目                             |  
-
+| <img src="/screen_shot/project.jpg" width="280"  alt="项目"/> | <img src="/screen_shot/g2.gif" width="280"  alt="动态图"/> | <img src="/screen_shot/webview.jpg" width="280"  alt="详细页"/> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                             项目                             |                            动态图                            |                            详细页                            |
 ## Thanks
 
 1. [hongyang](https://github.com/hongyangAndroid)
