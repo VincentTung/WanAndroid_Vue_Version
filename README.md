@@ -1,8 +1,7 @@
 <img src="/screen_shot/icon.png">
+## 项目介绍
 
-## API来源
-
-1. [玩Android API](https://www.wanandroid.com/blog/show/2)来自hongyang
+基于[玩Android API](https://www.wanandroid.com/blog/show/2) 使用vue.js开发的客户端
 
 ## 用到的三方库
 
