@@ -73,4 +73,8 @@ export default {
 .chapter {
   color: blue;
 }
+.child {
+  margin-right: 5px;
+  margin-top: 5px;
+}
 </style>

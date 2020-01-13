@@ -31,7 +31,6 @@ class MainActivity : FragmentActivity() {
         webSettings.databaseEnabled = true
         webSettings.setAppCacheEnabled(true)
         webSettings.useWideViewPort = true
-//        webSettings.allowFileAccessFromFileURLs = true
         /**
          * 浏览器跨域设置
          */

@@ -26,9 +26,8 @@ export default {
     }
   },
   methods: {
-
     onChange: function (index) {
-
+      this.$emit('tabIndexChange', index)
       if (index === 0) {
         this.$router.push({ name: 'MainPage' })
       } else
@@ -45,5 +44,4 @@ export default {
   }
 }
 </script>
-
 <style  lang="stylus"></style>
