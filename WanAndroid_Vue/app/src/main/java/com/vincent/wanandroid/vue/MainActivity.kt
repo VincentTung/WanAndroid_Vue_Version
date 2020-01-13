@@ -21,7 +21,7 @@ class MainActivity : FragmentActivity() {
     private val MAIN_PAGE = "file:///android_asset/index.html"
     var mBackKeyPressed = false
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled", "AddJavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,22 +40,6 @@ class MainActivity : FragmentActivity() {
         webSettings.loadWithOverviewMode = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webview.addJavascriptInterface(JS(), "android")
-        webview.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                var url = url
-                try {
-                    url = URLDecoder.decode(url, "utf-8")
-                } catch (e: UnsupportedEncodingException) {
-                    e.printStackTrace()
-                }
-
-                val uri = Uri.parse(url)
-                return super.shouldOverrideUrlLoading(view, url)
-            }
-
-
-        }
-
         webview.webChromeClient = WebChromeClient()
         webview.loadUrl(MAIN_PAGE)
     }

@@ -89,7 +89,6 @@ class ArticleWebViewActivity : FragmentActivity() {
 
     companion object {
 
-
         internal fun start(context: Context, url: String) {
             val intent = Intent(context, ArticleWebViewActivity::class.java)
             intent.putExtra("url", url)
