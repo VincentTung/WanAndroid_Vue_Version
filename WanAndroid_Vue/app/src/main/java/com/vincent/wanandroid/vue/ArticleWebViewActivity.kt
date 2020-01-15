@@ -26,17 +26,17 @@ class ArticleWebViewActivity : FragmentActivity() {
 
 
     override fun onPause() {
-        mWebViewAgent!!.webLifeCycle.onPause()
+        mWebViewAgent.webLifeCycle.onPause()
         super.onPause()
     }
 
     override fun onResume() {
-        mWebViewAgent!!.webLifeCycle.onResume()
+        mWebViewAgent.webLifeCycle.onResume()
         super.onResume()
     }
 
     public override fun onDestroy() {
-        mWebViewAgent!!.webLifeCycle.onDestroy()
+        mWebViewAgent.webLifeCycle.onDestroy()
         super.onDestroy()
     }
 
@@ -61,7 +61,7 @@ class ArticleWebViewActivity : FragmentActivity() {
             .ready()
             .go(mUrl)
 
-        webViewSetting(mWebViewAgent!!.getWebCreator().getWebView())
+        webViewSetting(mWebViewAgent.webCreator.webView)
         findViewById<View>(R.id.iv_back).setOnClickListener { v -> finish() }
     }
 
@@ -84,7 +84,7 @@ class ArticleWebViewActivity : FragmentActivity() {
 
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        return mWebViewAgent!!.handleKeyEvent(keyCode, event) || super.onKeyDown(keyCode, event)
+        return mWebViewAgent.handleKeyEvent(keyCode, event) || super.onKeyDown(keyCode, event)
     }
 
     companion object {
