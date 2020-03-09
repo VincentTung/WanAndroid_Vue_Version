@@ -11,6 +11,10 @@ export default {
   name: 'App',
   components: {
     Tab
+  },
+  mounted: function () {
+    console.log('------------------------------')
+    console.log(this.$store)
   }
 }
 </script>
