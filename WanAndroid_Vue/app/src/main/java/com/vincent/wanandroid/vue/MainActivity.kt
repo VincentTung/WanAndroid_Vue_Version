@@ -44,27 +44,27 @@ class MainActivity : FragmentActivity() {
         webview.loadUrl(MAIN_PAGE)
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (!mBackKeyPressed) {
-                mBackKeyPressed = true
-                Toast.makeText(this@MainActivity, "再按一次退出", Toast.LENGTH_SHORT).show()
-                Timer().schedule(object : TimerTask() {
-                    override fun run() {
-                        mBackKeyPressed = false
-                    }
-
-                }, 2000)
-                return true
-
-            } else {
-                this.finish()
-                exitProcess(0)
-            }
-        }
-        return super.onKeyDown(keyCode, event)
-    }
+//    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+//
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if (!mBackKeyPressed) {
+//                mBackKeyPressed = true
+//                Toast.makeText(this@MainActivity, "再按一次退出", Toast.LENGTH_SHORT).show()
+//                Timer().schedule(object : TimerTask() {
+//                    override fun run() {
+//                        mBackKeyPressed = false
+//                    }
+//
+//                }, 2000)
+//                return true
+//
+//            } else {
+//                this.finish()
+//                exitProcess(0)
+//            }
+//        }
+//        return super.onKeyDown(keyCode, event)
+//    }
 
     internal inner class JS {
         @JavascriptInterface
