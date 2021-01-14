@@ -10,14 +10,14 @@ import axios from 'axios'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 
-Vue.prototype.$axios = axios
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 Vue.prototype.isBuild = false
 //build
-Vue.prototype.baseUrl = 'https://www.wanandroid.com'
+// Vue.prototype.baseUrl = 'https://www.wanandroid.com'
 // dev
-// Vue.prototype.baseUrl = '/api'
+Vue.prototype.baseUrl = '/api'
 Vue.use(Vant)
 fastclick.attach(document.body)
 /* eslint-disable no-new */

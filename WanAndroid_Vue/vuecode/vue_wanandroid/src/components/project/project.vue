@@ -72,8 +72,8 @@ export default {
     },
     getWXAccountArticles: function (wxaccount) {
       this.articles = []
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/wxarticle/list/' + wxaccount.id + '/0/json')
         .then(function (response) {
           console.log(response)
@@ -86,8 +86,8 @@ export default {
         })
     },
     getData: function () {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/project/tree/json')
         .then(function (response) {
           console.log(response)

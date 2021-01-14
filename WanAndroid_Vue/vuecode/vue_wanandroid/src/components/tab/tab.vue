@@ -32,7 +32,7 @@ export default {
         this.$router.push({ name: 'MainPage' })
       } else
         if (index === 1) {
-          this.$router.push({ name: 'Knowledge' })
+          this.$router.push({name: 'Knowledge'})
         } else
           if (index === 2) {
             this.$router.push({ name: 'WxAccount' })

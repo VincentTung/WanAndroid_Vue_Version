@@ -83,8 +83,8 @@ export default {
       this.$router.go(-1)
     },
     getData: function (tree) {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/article/list/' + (this_.page) + '/json?cid=' + tree.id)
         .then(function (response) {
           console.log(response)

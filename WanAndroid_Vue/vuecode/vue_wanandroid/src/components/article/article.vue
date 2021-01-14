@@ -38,7 +38,7 @@ export default {
     },
     getData: function () {
       var this_ = this
-      this.$axios
+      this.$http
         .get(this.baseUrl + '/tree/json')
         .then(function (response) {
           console.log(response)
@@ -57,11 +57,11 @@ export default {
 <style scoped>
 .child {
   color: black;
-  font-size: 20;
+  font-size: 20px;
   margin-right: 5px;
 }
 .title {
   color: blue;
-  font-size: 10;
+  font-size: 10px;
 }
 </style>

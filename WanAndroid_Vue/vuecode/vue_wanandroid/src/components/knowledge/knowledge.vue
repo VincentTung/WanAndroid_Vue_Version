@@ -45,8 +45,8 @@ export default {
       })
     },
     getData: function () {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/tree/json')
         .then(function (response) {
           console.log(response)
@@ -68,7 +68,7 @@ export default {
 }
 .title {
   color: black;
-  font-size: 20;
+  font-size: 20px;
 }
 .chapter {
   color: blue;

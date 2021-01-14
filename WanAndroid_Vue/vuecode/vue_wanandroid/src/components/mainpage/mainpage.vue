@@ -68,8 +68,8 @@ export default {
     },
     getData: function () {
       this.page++
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/article/listproject/' + this_.page + '/json')
         .then(function (response) {
           console.log(response)
@@ -86,8 +86,8 @@ export default {
         })
     },
     getBanners: function () {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/banner/json')
         .then(function (response) {
           console.log(response)
@@ -109,7 +109,7 @@ export default {
 .title {
   color: black;
   font-weight: bold;
-  font-size: 20;
+  font-size: 20px;
 }
 .chapter {
   color: blue;
