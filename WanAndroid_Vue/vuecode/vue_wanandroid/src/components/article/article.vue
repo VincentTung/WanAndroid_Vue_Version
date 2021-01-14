@@ -57,7 +57,7 @@ export default {
 <style scoped>
 .child {
   color: black;
-  font-size: 20px;
+  font-size: 20;
   margin-right: 5px;
 }
 .title {

@@ -109,7 +109,7 @@ export default {
 .title {
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 20;
 }
 .chapter {
   color: blue;

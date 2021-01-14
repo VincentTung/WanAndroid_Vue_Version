@@ -88,7 +88,7 @@ export default {
         })
     },
     getData: function () {
-      var this_ = this
+      let this_ = this
       this.$http
         .get(this.baseUrl + '/wxarticle/chapters/json')
         .then(function (response) {
@@ -111,7 +111,7 @@ export default {
 
 .title {
   color: black;
-  font-size: 20px;
+  font-size: 20;
 }
 
 .chapter {

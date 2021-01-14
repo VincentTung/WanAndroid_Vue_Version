@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <div class="title">{{titles[curTabIndex]}}</div>
-      <router-view></router-view>
+      <div class="main-title">{{titles[curTabIndex]}}</div>
+      <router-view class="router-view"></router-view>
     </div>
     <div>
       <Tab v-on:tabIndexChange="tabIndexChange1"></Tab>
@@ -41,13 +41,21 @@ export default {
 }
 </script>
 <style scoped>
-.title {
+.main-title {
   height: 40px;
+  left: 0;
+  right: 0;
   text-align: center;
   color: white;
   font: bold;
   background: #4876ff;
   line-height: 40px;
   z-index: 9999;
+  position: fixed;
+}
+.router-view{
+  position: relative;
+  margin: 0;
+  top: 40px;
 }
 </style>
