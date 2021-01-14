@@ -14,7 +14,7 @@ Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 Vue.prototype.isBuild = false
-//build
+// build
 Vue.prototype.baseUrl = 'https://www.wanandroid.com'
 // dev
 // Vue.prototype.baseUrl = '/api'
