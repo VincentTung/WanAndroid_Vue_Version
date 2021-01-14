@@ -23,20 +23,20 @@ android {
 
     signingConfigs {
         debug {
-            keyAlias(properties.getProperty("alias"))
-            keyPassword(properties.getProperty("pwd"))
-            storeFile file(properties.getProperty("key"))
-            storePassword(properties.getProperty("pwd"))
-            v2SigningEnabled false
-            v1SigningEnabled true
+//            keyAlias(properties.getProperty("alias"))
+//            keyPassword(properties.getProperty("pwd"))
+//            storeFile file(properties.getProperty("key"))
+//            storePassword(properties.getProperty("pwd"))
+//            v2SigningEnabled false
+//            v1SigningEnabled true
         }
 
         release {
-            keyAlias(properties.getProperty("alias"))
-            keyPassword(properties.getProperty("pwd"))
-            storeFile file(properties.getProperty("key"))
-            storePassword(properties.getProperty("pwd"))
-            v2SigningEnabled false
+            keyAlias alias
+            keyPassword pwd
+            storeFile file(key)
+            storePassword pwd
+            v2SigningEnabled true
             v1SigningEnabled true
         }
     }
