@@ -38,7 +38,7 @@ export default {
     },
     getData: function () {
       var this_ = this
-      this.$axios
+      this.$http
         .get(this.baseUrl + '/tree/json')
         .then(function (response) {
           console.log(response)
@@ -62,6 +62,6 @@ export default {
 }
 .title {
   color: blue;
-  font-size: 10;
+  font-size: 10px;
 }
 </style>

@@ -19,9 +19,9 @@
         >
           <van-cell v-for="item in articles" :key="item.id">
             <div v-on:click="openArticle(item)">
-              <div class="chapter">{{item.chapterName}}</div>
-              <div class="title">{{item.title}}</div>
-              <div class="time">{{formatMsgTime(item.publishTime)}}</div>
+              <div class="chapter">{{ item.chapterName }}</div>
+              <div class="title">{{ item.title }}</div>
+              <div class="time">{{ formatMsgTime(item.publishTime) }}</div>
             </div>
           </van-cell>
         </van-list>
@@ -31,7 +31,8 @@
 </template>
 
 <script>
-import { formatMsgTime } from '@/util/util'
+import {formatMsgTime} from '@/util/util'
+
 export default {
   data: function () {
     return {
@@ -69,8 +70,8 @@ export default {
       // })
     },
     getWXAccountArticles: function (wxaccount) {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/wxarticle/list/' + wxaccount.id + '/' + this_.page + '/json')
         .then(function (response) {
           console.log(response)
@@ -87,8 +88,8 @@ export default {
         })
     },
     getData: function () {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/wxarticle/chapters/json')
         .then(function (response) {
           console.log(response)
@@ -107,10 +108,12 @@ export default {
 .time {
   color: grey;
 }
+
 .title {
   color: black;
   font-size: 20;
 }
+
 .chapter {
   color: blue;
 }

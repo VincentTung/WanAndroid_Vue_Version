@@ -23,9 +23,9 @@
                   </van-image>
                 </van-col>
                 <van-col span="16" offset="0">
-                  <div class="conent">
+                  <div class="content">
                     <div class="van-ellipsis">{{item.title}}</div>
-                    <div class="a">{{item.desc}}</div>
+                    <div class="desc">{{item.desc}}</div>
                     <div class="time">{{item.author}}</div>
                   </div>
                 </van-col>
@@ -72,8 +72,8 @@ export default {
     },
     getWXAccountArticles: function (wxaccount) {
       this.articles = []
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/wxarticle/list/' + wxaccount.id + '/0/json')
         .then(function (response) {
           console.log(response)
@@ -86,8 +86,8 @@ export default {
         })
     },
     getData: function () {
-      var this_ = this
-      this.$axios
+      let this_ = this
+      this.$http
         .get(this.baseUrl + '/project/tree/json')
         .then(function (response) {
           console.log(response)
@@ -108,25 +108,26 @@ export default {
 .time {
   color: grey;
 }
-.a {
+.c {
   color: black;
-  font-size: 20;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  white-space: pre-wrap;
 }
 .van-ellipsis {
   color: black;
   font-weight: bold;
 }
-.content {
-  margin: 10;
+.desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 .app {
   margin-top: 10px;
+}
+.content {
+  margin-left: 10px;
 }
 .van-tabs__nav--card {
   margin-left: 0px;

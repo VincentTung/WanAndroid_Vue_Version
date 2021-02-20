@@ -1,10 +1,11 @@
 <template>
   <div>
     <div>
-      <router-view></router-view>
+      <div class="main-title">{{titles[curTabIndex]}}</div>
+      <router-view class="router-view"></router-view>
     </div>
     <div>
-      <Tab></Tab>
+      <Tab v-on:tabIndexChange="tabIndexChange1"></Tab>
     </div>
   </div>
 </template>
@@ -18,8 +19,8 @@ export default {
   },
   data: function () {
     return {
-      page: 0
-
+      curTabIndex: 0,
+      titles: ['首页', '知识体系', '公众号', '项目']
     }
   },
   name: 'tabpage',
@@ -30,10 +31,31 @@ export default {
 
     formatMsgTime: function (timeStamp) {
       return formatMsgTime(timeStamp)
+    },
+    tabIndexChange1: function (tabIndex_) {
+      console.log(tabIndex_)
+      this.curTabIndex = tabIndex_
     }
 
   }
 }
 </script>
 <style scoped>
+.main-title {
+  height: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font: bold;
+  background: #4876ff;
+  line-height: 40px;
+  z-index: 9999;
+  position: fixed;
+}
+.router-view{
+  position: relative;
+  margin: 0;
+  top: 40px;
+}
 </style>

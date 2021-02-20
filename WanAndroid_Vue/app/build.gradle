@@ -1,11 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-Properties properties = new Properties()
-InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
-properties.load(inputStream)
+
 android {
     compileSdkVersion 28
     compileOptions {
@@ -22,30 +18,18 @@ android {
     }
 
     signingConfigs {
-        debug {
-            keyAlias(properties.getProperty("alias"))
-            keyPassword(properties.getProperty("pwd"))
-            storeFile file(properties.getProperty("key"))
-            storePassword(properties.getProperty("pwd"))
-            v2SigningEnabled false
-            v1SigningEnabled true
-        }
 
         release {
-            keyAlias(properties.getProperty("alias"))
-            keyPassword(properties.getProperty("pwd"))
-            storeFile file(properties.getProperty("key"))
-            storePassword(properties.getProperty("pwd"))
-            v2SigningEnabled false
+            keyAlias alias
+            keyPassword pwd
+            storeFile file(key)
+            storePassword pwd
+            v2SigningEnabled true
             v1SigningEnabled true
         }
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-        }
+
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
